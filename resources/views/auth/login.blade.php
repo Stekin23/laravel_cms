@@ -12,7 +12,7 @@
     <!-- Bootstrap -->
     <link href="{{asset('CMS/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="{{asset('CMS/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('CMS/vendors/font-awesome/css/font-awesome.min.cs')}}s" rel="stylesheet">
     <!-- NProgress -->
     <link href="{{asset('CMS/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
     <!-- Animate.css -->
@@ -29,29 +29,28 @@
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
-                {{Form::open(array('route'=>'login'))}}
-                    <h1>Login Form</h1>
-                    <div>
-                        <input name="mail"id="mail" type="text" class="form-control" placeholder="Username" required="" />
-                    </div>
-                    <div>
-                        <input name="password" id="password" type="password" class="form-control" placeholder="Password" required="" />
-                    </div>
-                    <div>
+                {{Form::open(array('route' => 'login'))}}
+                <h1>Login Form</h1>
+                <div>
+                    <input name="email" id="email" type="text" class="form-control" placeholder="Email" required="" />
+                </div>
+                <div>
+                    <input name="password" id="password" type="password" class="form-control" placeholder="Password" required="" />
+                </div>
+                <div>
+                    {{Form::submit('Log in', array('class' => 'btn btn-default submit'))}}
+                    <a class="reset_pass" href="#">Lost your password?</a>
+                </div>
 
-                        {{Form::submit('Log in', array('class' => 'btn btn-default submit' ))}}                    </div>
-                        <a class="reset_pass" href="#">Lost your password?</a>
-                    </div>
+                <div class="clearfix"></div>
 
+                <div class="separator">
+                    <p class="change_link">New to site?
+                        <a href="{{route('register')}}" class="to_register"> Create Account </a>
+                    </p>
                     <div class="clearfix"></div>
-
-                    <div class="separator">
-                        <p class="change_link">New to site?
-                            <a href="{{route('register')}}" class="to_register"> Create Account </a>
-                        </p>
-                        <div class="clearfix"></div>
-                        <br />
-                    </div>
+                    <br />
+                </div>
                 {{Form::close()}}
             </section>
         </div>

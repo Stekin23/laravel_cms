@@ -18,6 +18,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/', 'Front\homeController@index')->name('main');
+Route::get('/archive', 'Front\newsController@index')->name('Front.archive.index');
+Route::get('/archive/{id}', 'Front\newsController@view')->name('Front.archive.view');
+Route::get('/page/{id}', 'Front\homeController@page')->name('Front.page');
+Route::get('/spage/{id}', 'Front\homeController@spage')->name('Front.spage');
+
+
+
 Auth::routes();
 Route::get('/exit', function (){\Illuminate\Support\Facades\Auth::logout();
     return redirect()->route('login');
@@ -43,12 +51,12 @@ Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function(){
     });
 
 
-    Route::group(['prefix => news'], function (){
-       Route::get('list/', 'CMS\newsController@index')->name('CMS.news.list');
+    Route::group(['prefix' => 'news'], function (){
+       Route::get('/list', 'CMS\newsController@index')->name('CMS.news.list');
        Route::get('/create', 'CMS\newsController@create')->name('CMS.news.create');
        Route::post('/create_post', 'CMS\newsController@create_post')->name('CMS.news.create_post');
-       Route::get('/remove/{id}', 'CMS.newsController@remove')->name('CMS.news.remove');
-       Route::get('/edit{id}','CMS\newsController@edit')->name('CMS.news.edit');
+       Route::get('/remove/{id}', 'CMS\newsController@remove')->name('CMS.news.remove');
+       Route::get('/edit/{id}','CMS\newsController@edit')->name('CMS.news.edit');
        Route::post('/edit_post/{id}', 'CMS\newsController@edit_post')->name('CMS.news.edit_post');
     });
 });

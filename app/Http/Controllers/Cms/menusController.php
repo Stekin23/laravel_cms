@@ -98,7 +98,6 @@ class menusController extends Controller
         $subs=SubMenus::find($id);
         View::share('menus', $menus);
         View::share('subs', $subs);
-
         return view('CMS.menu.editsub');
     }
 
